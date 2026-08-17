@@ -74,7 +74,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 pb-4 border-b-2 border-[#263D5B]">
           <div className="flex items-center gap-2">
             <h2 className="text-2xl font-black font-comic text-[#263D5B]">
-              Institutions Disponibles ({filteredInstitutions.length})
+              Institutions & Formations TAWJIH ({filteredInstitutions.length})
             </h2>
             <span className="text-xs bg-[#49B6E5] text-[#263D5B] font-mono px-2.5 py-1 rounded-full border border-[#263D5B] font-bold">
               {activeBranch === 'ALL' ? 'Toutes branches' : `Branche: ${activeBranch}`}
@@ -138,7 +138,7 @@ export default function Home() {
         )}
       </main>
 
-      {/* Score Calculator Modal */}
+      {/* Score Calculator & CPGE Modal */}
       <ScoreCalculator 
         isOpen={isCalculatorOpen}
         onClose={() => setIsCalculatorOpen(false)}

@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'StudySouk | Moroccan Post-Bac Orientation Platform',
-  description: 'دليلك الشامل للتوجيه الجامعي بالمغرب - Moroccan Post-Bac Orientation Platform with Ultra Max Hand-Drawn UI',
+  title: 'TAWJIH.ma | Moroccan Post-Bac Orientation & CPGE Platform',
+  description: 'منصة التوجيه الجامعي وأقسام التحضير بالمغرب - TAWJIH.ma Moroccan Orientation Platform with CPGE & Preselection Simulators',
 }
 
 export default function RootLayout({

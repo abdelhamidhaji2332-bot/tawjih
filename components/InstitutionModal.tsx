@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Institution } from '@/data/institutions';
-import { X, Clock, CheckCircle, ExternalLink, Briefcase, BookOpen, GraduationCap } from 'lucide-react';
+import { X, Clock, CheckCircle, ExternalLink, Briefcase, BookOpen, Globe } from 'lucide-react';
 
 interface InstitutionModalProps {
   institution: Institution | null;
@@ -32,7 +32,7 @@ export default function InstitutionModal({ institution, onClose }: InstitutionMo
 
           {/* Header */}
           <div className="flex items-start gap-4 mb-6 pb-4 border-b-2 border-dashed border-[#263D5B]/30">
-            <div className="w-16 h-16 bg-[#49B6E5] hand-border flex items-center justify-center text-[#263D5B] text-2xl font-black font-mono shrink-0 shadow-sketch">
+            <div className="w-16 h-16 bg-[#49B6E5] hand-border flex items-center justify-center text-[#263D5B] text-xl font-black font-mono shrink-0 shadow-sketch">
               {institution.acronym}
             </div>
             <div>
@@ -102,7 +102,7 @@ export default function InstitutionModal({ institution, onClose }: InstitutionMo
             </div>
 
             {/* Career Prospects */}
-            <div className="bg-amber-550/10 border-2 border-dashed border-[#263D5B]/40 p-4 rounded-xl">
+            <div className="bg-amber-50 border-2 border-dashed border-[#263D5B]/40 p-4 rounded-xl">
               <h3 className="text-base font-bold font-comic text-[#263D5B] mb-3 flex items-center gap-2">
                 <Briefcase size={18} className="text-[#D97706]" />
                 <span>Débouchés & Perspectives / الآفاق المهنية</span>
@@ -116,6 +116,25 @@ export default function InstitutionModal({ institution, onClose }: InstitutionMo
                 ))}
               </div>
             </div>
+
+            {/* Official Website / Signup Portal CTA */}
+            {institution.signupPortal && (
+              <div className="bg-[#49B6E5]/20 hand-border p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                  <div className="text-xs font-mono font-bold text-[#263D5B]">PORTAIL OFFICIEL D'INSCRIPTION</div>
+                  <div className="text-sm font-bold text-[#263D5B]">{institution.signupPortal}</div>
+                </div>
+                <a
+                  href={institution.signupPortal}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hand-btn px-5 py-2.5 bg-[#263D5B] text-white font-bold text-sm flex items-center gap-2 hover:bg-[#1a2c42]"
+                >
+                  <Globe size={16} className="text-[#49B6E5]" />
+                  <span>Accéder au site / البوابة الرسمية</span>
+                </a>
+              </div>
+            )}
 
             {/* Footer action */}
             <div className="flex justify-end pt-2">

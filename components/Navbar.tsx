@@ -1,4 +1,3 @@
-'Key concepts: Navbar with hand-drawn styling and smooth navigation'
 'use client';
 
 import React from 'react';
@@ -27,10 +26,10 @@ export default function Navbar({ onOpenCalculator, activeTab, setActiveTab }: Na
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-2xl font-black font-comic tracking-tight text-[#263D5B]">Study<span className="text-[#49B6E5] underline decoration-wavy">Souk</span></h1>
-              <span className="text-xs bg-[#263D5B] text-white px-2 py-0.5 rounded-full font-mono">v2.0 Ultra</span>
+              <h1 className="text-2xl font-black font-comic tracking-tight text-[#263D5B]">TAWJIH<span className="text-[#49B6E5] underline decoration-wavy">.ma</span></h1>
+              <span className="text-xs bg-[#263D5B] text-white px-2 py-0.5 rounded-full font-mono">Ultra Max</span>
             </div>
-            <p className="text-xs font-arabic font-bold text-[#263D5B]/80">دليلك للتوجيه الجامعي بالمغرب</p>
+            <p className="text-xs font-arabic font-bold text-[#263D5B]/80">منصة التوجيه الجامعي بالمغرب</p>
           </div>
         </motion.div>
 
@@ -51,7 +50,7 @@ export default function Navbar({ onOpenCalculator, activeTab, setActiveTab }: Na
             className="hand-btn px-4 py-2 text-sm font-bold bg-[#263D5B] text-white flex items-center gap-2 hover:bg-[#1e3048]"
           >
             <Calculator size={18} className="text-[#49B6E5]" />
-            <span>Simulateur / حاسبة النقطة</span>
+            <span>Simulateur & CPGE / حاسبة النقط</span>
           </button>
 
           <div className="hidden md:flex items-center gap-1 bg-[#49B6E5]/20 border-2 border-[#263D5B] rounded-full px-3 py-1 text-xs font-mono font-bold text-[#263D5B]">

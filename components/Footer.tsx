@@ -13,7 +13,7 @@ export default function Footer() {
             <GraduationCap size={22} strokeWidth={2.5} />
           </div>
           <div className="text-left">
-            <h2 className="text-xl font-black font-comic text-[#263D5B]">Study<span className="text-[#49B6E5]">Souk</span></h2>
+            <h2 className="text-xl font-black font-comic text-[#263D5B]">TAWJIH<span className="text-[#49B6E5]">.ma</span></h2>
             <p className="text-xs font-arabic font-bold text-[#263D5B]/70">منصة التوجيه الجامعي بالمغرب • Ultra Max Edition</p>
           </div>
         </div>
@@ -24,7 +24,7 @@ export default function Footer() {
         </div>
 
         <div className="text-xs text-gray-500 font-medium">
-          © {new Date().getFullYear()} StudySouk. Tous droits réservés.
+          © {new Date().getFullYear()} TAWJIH.ma. Tous droits réservés.
         </div>
 
       </div>
