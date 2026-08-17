@@ -15,15 +15,15 @@ export default function AiAdvisor() {
   const [messages, setMessages] = useState<Message[]>([
     {
       sender: 'ai',
-      text: 'Bonjour ! Je suis ton conseiller d\'orientation virtuel TAWJIH AI. Pose-moi tes questions sur les écoles, les seuils, les branches ou les concours au Maroc en Français, Arabe ou Darija ! 🇲🇦🎓'
+      text: 'Ahlen! I am your TAWJIH AI Orientation Expert. Ask me about ANY school in Morocco (Public, Private like UIR/Al Akhawayn, OFPPT, CPGE, Médecine) or abroad, bourses, or career paths in French, Arabic, English or Darija! 🇲🇦✨'
     }
   ]);
 
   const quickQuestions = [
     'Quelles écoles pour Sciences Math ?',
-    'كيف أحسب نقطة الانتقاء (75/25)؟',
-    'Comment postuler en Médecine (FMP) ?',
-    'ما هي شروط الولوج للأقسام التحضيرية CPGE؟'
+    'ما هي شروط الولوج للأقسام التحضيرية CPGE؟',
+    'Tell me about private universities (UIR, Al Akhawayn)',
+    'كيفاش نحصل على منحة الدراسات العليا Mabourse؟'
   ];
 
   const handleSend = (query?: string) => {
@@ -34,25 +34,30 @@ export default function AiAdvisor() {
     setMessages(newMsgs);
     setInput('');
 
-    // Simulate intelligent orientation response
+    // Simulate advanced intelligent AI advisor responding to any topic (even outside the core list)
     setTimeout(() => {
-      let reply = "Je peux t'aider avec toutes les informations sur l'orientation post-bac au Maroc (ENSA, ENCG, FMP, CPGE, BTS...). N'hésite pas à préciser ta branche ou ton école cible !";
+      let reply = "";
       const lower = q.toLowerCase();
 
-      if (lower.includes('math') || lower.includes('رياضيات')) {
-        reply = "Pour les branches Sciences Mathématiques (SMA/SMB), tu as accès à l'élite : CPGE (الأقسام التحضيرية), ENSA, ENSAM, FST, Facultés de Médecine (FMP/FMD), et les classes prépas intégrées comme IAV. Tes notes en maths et physique sont déterminantes !";
-      } else if (lower.includes('75') || lower.includes('نقطة') || lower.includes('انتقاء') || lower.includes('score')) {
-        reply = "La formule standard de présélection dans la plupart des grandes écoles (ENSA, ENCG, FMP, FST, EST) est : Score = (Examen National × 0.75) + (Examen Régional × 0.25). Tu peux utiliser notre simulateur en haut pour calculer ton score exact !";
+      if (lower.includes('uir') || lower.includes('akhawayn') || lower.includes('private') || lower.includes('الخاصة') || lower.includes('privée')) {
+        reply = "Les universités et écoles privées au Maroc (comme l'Université Internationale de Rabat - UIR, Al Akhawayn à Ifrane, Mundiapolis, UIC...) offrent d'excellentes formations reconnues avec des doubles diplômes internationaux. L'admission se fait généralement sur étude de dossier, concours propre et entretien de motivation. Les frais de scolarité varient selon les filières.";
+      } else if (lower.includes('bourse') || lower.includes('منحة') || lower.includes('mabourse')) {
+        reply = "Pour bénéficier de la bourse d'enseignement supérieur au Maroc, la demande s'effectue obligatoirement via la plateforme nationale www.mabourse.enssup.gov.ma dès l'obtention du baccalauréat. L'attribution dépend des critères sociaux de la famille.";
+      } else if (lower.includes('ofppt') || lower.includes('téchnicien') || lower.includes('التكوين المهني')) {
+        reply = "L'OFPPT propose des formations professionnelles de haut niveau (Technicien Spécialisé, Technicien, Qualification) dans des secteurs porteurs : automobile (IFMIA), aéronautique, digital, hôtellerie et gestion. Inscription via www.ofppt.ma.";
+      } else if (lower.includes('math') || lower.includes('رياضيات')) {
+        reply = "Pour les branches Sciences Mathématiques (SMA/SMB), tu disposes d'un profil très recherché pour les CPGE (الأقسام التحضيرية), l'ENSA, l'ENSAM, les Facultés de Médecine (FMP) et les écoles d'ingénieurs. Tes notes en maths et physique sont ton meilleur passeport !";
+      } else if (lower.includes('75') || lower.includes('انتقاء') || lower.includes('score')) {
+        reply = "La formule standard de présélection dans les concours marocains (ENSA, ENCG, FMP, FST, EST) est : Score = (Examen National × 0.75) + (Examen Régional × 0.25). Tu peux simuler ton score exact avec notre outil dédié en haut de la page !";
       } else if (lower.includes('medecine') || lower.includes('طب') || lower.includes('fmp')) {
-        reply = "Pour accéder à la Faculté de Médecine et de Pharmacie (FMP) ou Médecine Dentaire (FMD), il faut un dossier excellent (présélection stricte basée sur 75% national + 25% régional) suivi d'un Concours Commun (QCM en Maths, Physique, Chimie, SVT). Site officiel : www.medramo.ac.ma";
+        reply = "La Faculté de Médecine et de Pharmacie (FMP) et de Médecine Dentaire (FMD) nécessitent un excellent dossier (présélection stricte) et la réussite au Concours Commun (QCM : Maths, Physique, Chimie, SVT). Plus d'infos sur medramo.ac.ma.";
       } else if (lower.includes('cpge') || lower.includes('أقسام تحضيرية')) {
-        reply = "Les CPGE (Classes Préparatoires aux Grandes Écoles) durent 2 ans (MPSI, PCSI, TSI, ECT) et préparent au Concours National Commun (CNC) pour intégrer les grandes écoles d'ingénieurs (EMI, EHTP, ENSIAS...) et de commerce. La sélection se base sur les notes de 1ère et 2ème année du Bac.";
-      } else if (lower.includes('ensa')) {
-        reply = "L'ENSA (École Nationale des Sciences Appliquées) propose un cycle ingénieur d'État de 5 ans. L'accès se fait via un concours commun après une présélection nationale. Inscription sur le portail officiel : www.ensa-concours.ma";
-      } else if (lower.includes('encg') || lower.includes('تجارة')) {
-        reply = "L'ENCG forme des cadres en commerce et gestion en 5 ans. L'accès se fait par présélection (75/25) puis le concours TAFEM (www.tafem.ma).";
-      } else if (lower.includes('كيفاش') || lower.includes('كيف')) {
-        reply = "لكي تترشح لأي مؤسسة بالمغرب، يجب أولاً تتبع الإعلانات الرسمية على بوابات المدارس (مثل ensa-concours.ma أو tafem.ma)، إنشاء حساب شخصي، إدخال النقط المطلوبة، ثم إيداع الملفات إذا تطلب الأمر. هل تبحث عن مدرسة معينة؟";
+        reply = "Les CPGE durent 2 ans (MPSI, PCSI, TSI, ECT) et préparent au Concours National Commun (CNC) pour intégrer les plus grandes écoles d'ingénieurs et de management.";
+      } else if (lower.includes('etranger') || lower.includes('france') || lower.includes('campus france') || lower.includes('خارج')) {
+        reply = "Pour étudier à l'étranger (ex: France via Campus France / Parcoursup, Canada, Allemagne), il faut s'y prendre tôt : préparer les tests de langue (TCF/DELF ou IELTS/TOEFL), constituer les dossiers académiques et vérifier les dates limites sur les plateformes officielles.";
+      } else {
+        // General intelligent fallback for any question outside the database
+        reply = `Excellente question ! Concernant "${q}", même si cette formation ou sujet spécifique n'est pas dans notre liste principale publique, retiens ces conseils clés : \n1. Vérifie toujours le site officiel de l'établissement ou du ministère (enssup.gov.ma).\n2. Respecte scrupuleusement les dates limites de préinscription.\n3. Prépare tes pièces justificatives à l'avance. \nBesoin de précisions sur une autre école au Maroc ?`;
       }
 
       setMessages(prev => [...prev, { sender: 'ai', text: reply }]);
@@ -80,7 +85,7 @@ export default function AiAdvisor() {
             initial={{ opacity: 0, scale: 0.8, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 30 }}
-            className="fixed bottom-24 right-4 sm:right-6 z-50 w-96 max-w-[92vw] bg-white hand-border shadow-sketchLg flex flex-col h-[500px] overflow-hidden"
+            className="fixed bottom-24 right-4 sm:right-6 z-50 w-96 max-w-[92vw] bg-white hand-border shadow-sketchLg flex flex-col h-[520px] overflow-hidden"
           >
             {/* Header */}
             <div className="bg-[#263D5B] text-white p-4 flex items-center justify-between border-b-3 border-[#263D5B]">
@@ -90,10 +95,10 @@ export default function AiAdvisor() {
                 </div>
                 <div>
                   <h3 className="font-bold font-comic text-base flex items-center gap-1.5">
-                    <span>TAWJIH AI Advisor</span>
+                    <span>TAWJIH AI Expert</span>
                     <Sparkles size={14} className="text-[#49B6E5]" />
                   </h3>
-                  <p className="text-[10px] font-arabic text-[#49B6E5]">مستشار التوجيه الذكي بالمغرب</p>
+                  <p className="text-[10px] font-arabic text-[#49B6E5]">مستشار التوجيه الذكي (عام وخاص)</p>
                 </div>
               </div>
               <button
@@ -117,7 +122,7 @@ export default function AiAdvisor() {
                     </div>
                   )}
                   <div
-                    className={`max-w-[80%] p-3 rounded-2xl text-xs sm:text-sm font-medium ${
+                    className={`max-w-[85%] p-3 rounded-2xl text-xs sm:text-sm font-medium whitespace-pre-line ${
                       m.sender === 'user'
                         ? 'bg-[#263D5B] text-white rounded-br-none'
                         : 'bg-white text-[#111827] hand-border rounded-bl-none shadow-sm'
@@ -154,7 +159,7 @@ export default function AiAdvisor() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Posez votre question / اطرح سؤالك هنا..."
+                placeholder="Posez votre question (même hors catalogue)..."
                 className="flex-1 px-3 py-2 text-xs sm:text-sm hand-border bg-gray-50 focus:outline-none focus:bg-white"
               />
               <button
