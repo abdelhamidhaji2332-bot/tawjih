@@ -9,6 +9,7 @@ import BranchFilter from '@/components/BranchFilter';
 import ScoreCalculator from '@/components/ScoreCalculator';
 import InstitutionCard from '@/components/InstitutionCard';
 import InstitutionModal from '@/components/InstitutionModal';
+import AiAdvisor from '@/components/AiAdvisor';
 import Footer from '@/components/Footer';
 import { Search, Filter, BookOpen } from 'lucide-react';
 
@@ -48,7 +49,7 @@ export default function Home() {
   }, [activeBranch, selectedCategory, searchQuery]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FDFBF7]">
+    <div className="min-h-screen flex flex-col bg-[#FDFBF7] relative">
       {/* Navbar */}
       <Navbar 
         onOpenCalculator={() => setIsCalculatorOpen(true)} 
@@ -149,6 +150,9 @@ export default function Home() {
         institution={selectedInstitution}
         onClose={() => setSelectedInstitution(null)}
       />
+
+      {/* AI Advisor Chat Widget */}
+      <AiAdvisor />
 
       {/* Footer */}
       <Footer />
