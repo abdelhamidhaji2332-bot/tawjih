@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Institution } from '@/data/institutions';
-import { X, Clock, CheckCircle, ExternalLink, Briefcase, BookOpen, Globe } from 'lucide-react';
+import { X, Clock, CheckCircle, ExternalLink, Briefcase, BookOpen, Globe, MapPin, TrendingUp } from 'lucide-react';
 
 interface InstitutionModalProps {
   institution: Institution | null;
@@ -59,7 +59,7 @@ export default function InstitutionModal({ institution, onClose }: InstitutionMo
               <div className="bg-[#FDFBF7] hand-border p-4 flex items-center gap-3">
                 <Clock className="text-[#49B6E5] shrink-0" size={24} />
                 <div>
-                  <div className="text-xs font-bold text-gray-500 uppercase">Durée des Études / مدة الدراسة</div>
+                  <div className="text-xs font-bold text-gray-500 uppercase">Durée & Diplôme / مدة التكوين</div>
                   <div className="text-sm font-bold font-mono text-[#263D5B]">{institution.duration}</div>
                 </div>
               </div>
@@ -67,12 +67,47 @@ export default function InstitutionModal({ institution, onClose }: InstitutionMo
               <div className="bg-[#FDFBF7] hand-border p-4 flex items-center gap-3">
                 <CheckCircle className="text-green-600 shrink-0" size={24} />
                 <div>
-                  <div className="text-xs font-bold text-gray-500 uppercase">Type d'Accès / طريقة الولوج</div>
+                  <div className="text-xs font-bold text-gray-500 uppercase">Mode d'Admission / طريقة الولوج</div>
                   <div className="text-sm font-bold text-[#263D5B]">{institution.accessType}</div>
-                  <div className="text-xs font-arabic text-[#263D5B]/70">{institution.accessTypeAr}</div>
                 </div>
               </div>
             </div>
+
+            {/* Cities List if available */}
+            {institution.cities && institution.cities.length > 0 && (
+              <div className="bg-white hand-border p-4">
+                <h3 className="text-base font-bold font-comic text-[#263D5B] mb-2 flex items-center gap-2">
+                  <MapPin size={18} className="text-[#49B6E5]" />
+                  <span>Villes / Réseau national (المدن المتواجدة بها)</span>
+                </h3>
+                <div className="flex flex-wrap gap-1.5">
+                  {institution.cities.map((city, idx) => (
+                    <span key={idx} className="px-2.5 py-1 bg-[#49B6E5]/20 text-[#263D5B] font-mono text-xs font-bold rounded-lg border border-[#263D5B]">
+                      {city}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Historical Thresholds if available */}
+            {institution.historicalSeuils && (
+              <div className="bg-amber-50 hand-border p-4">
+                <h3 className="text-base font-bold font-comic text-[#263D5B] mb-2 flex items-center gap-2">
+                  <TrendingUp size={18} className="text-[#D97706]" />
+                  <span>Seuils Historiques Estimés de Présélection (عتبات الانتقاء التاريخية)</span>
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs font-mono">
+                  {Object.entries(institution.historicalSeuils).map(([filiere, years]: [string, any], idx) => (
+                    <div key={idx} className="bg-white p-2 rounded-lg border border-[#263D5B]/30">
+                      <div className="font-bold text-[#49B6E5] uppercase">{filiere}</div>
+                      <div>2025: {years.y2025} / 20</div>
+                      <div>2024: {years.y2024} / 20</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {/* Description */}
             <div className="bg-white hand-border p-4">
@@ -80,8 +115,7 @@ export default function InstitutionModal({ institution, onClose }: InstitutionMo
                 <BookOpen size={18} className="text-[#49B6E5]" />
                 <span>Description de la Formation / نبذة عن التكوين</span>
               </h3>
-              <p className="text-sm text-[#111827] mb-3 leading-relaxed">{institution.descriptionFr}</p>
-              <p className="text-sm font-arabic font-bold text-[#263D5B] text-right bg-[#49B6E5]/10 p-2 rounded-lg">{institution.descriptionAr}</p>
+              <p className="text-sm text-[#111827] leading-relaxed">{institution.descriptionFr}</p>
             </div>
 
             {/* Eligible Branches */}
@@ -95,24 +129,8 @@ export default function InstitutionModal({ institution, onClose }: InstitutionMo
                     key={idx}
                     className="px-3 py-1 bg-[#263D5B] text-white text-xs font-mono font-bold rounded-lg shadow-sm"
                   >
-                    ✓ {branch}
+                    ✓ {branch.toUpperCase()}
                   </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Career Prospects */}
-            <div className="bg-amber-50 border-2 border-dashed border-[#263D5B]/40 p-4 rounded-xl">
-              <h3 className="text-base font-bold font-comic text-[#263D5B] mb-3 flex items-center gap-2">
-                <Briefcase size={18} className="text-[#D97706]" />
-                <span>Débouchés & Perspectives / الآفاق المهنية</span>
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {institution.careerProspects.map((prospect, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-sm font-medium text-[#263D5B] bg-white p-2 rounded-lg border border-[#263D5B]/20">
-                    <span className="w-2 h-2 rounded-full bg-[#49B6E5]"></span>
-                    <span>{prospect}</span>
-                  </div>
                 ))}
               </div>
             </div>
@@ -121,7 +139,7 @@ export default function InstitutionModal({ institution, onClose }: InstitutionMo
             {institution.signupPortal && (
               <div className="bg-[#49B6E5]/20 hand-border p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div>
-                  <div className="text-xs font-mono font-bold text-[#263D5B]">PORTAIL OFFICIEL D'INSCRIPTION</div>
+                  <div className="text-xs font-mono font-bold text-[#263D5B]">PLATEFORME OFFICIELLE D'ACCÈS</div>
                   <div className="text-sm font-bold text-[#263D5B]">{institution.signupPortal}</div>
                 </div>
                 <a
