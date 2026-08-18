@@ -7,14 +7,20 @@
 :root {
   --primary: #49B6E5;
   --secondary: #263D5B;
-  --bg-color: #F8FAFC;
+  --bg-color: #FDFBF7;
 }
 
 body {
   font-family: 'Comic Neue', 'Tajawal', sans-serif;
-  background-color: #FDFBF7;
+  background-color: var(--bg-color);
   color: #111827;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body, body.dark-mode {
+  background-color: #0b0f19 !important;
+  color: #f3f4f6 !important;
 }
 
 .hand-border {
@@ -22,9 +28,8 @@ body {
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 }
 
-.hand-border-dashed {
-  border: 3px dashed #263D5B;
-  border-radius: 205px 25px 195px 25px/25px 195px 25px 205px;
+.dark .hand-border, body.dark-mode .hand-border {
+  border: 3px solid #38bdf8 !important;
 }
 
 .hand-card {
@@ -34,9 +39,11 @@ body {
   transition: all 0.2s ease-in-out;
 }
 
-.hand-card:hover {
-  transform: translateY(-3px) rotate(0.5deg);
-  box-shadow: 6px 6px 0px 0px #49B6E5;
+.dark .hand-card, body.dark-mode .hand-card {
+  background-color: #111827 !important;
+  border: 3px solid #38bdf8 !important;
+  box-shadow: 4px 4px 0px 0px #38bdf8 !important;
+  color: #f3f4f6 !important;
 }
 
 .hand-btn {
@@ -46,14 +53,11 @@ body {
   transition: all 0.15s ease;
 }
 
-.hand-btn:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0px 0px #263D5B;
-}
-
-.hand-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px 0px #263D5B;
+.dark .hand-btn, body.dark-mode .hand-btn {
+  border: 2px solid #38bdf8 !important;
+  box-shadow: 3px 3px 0px 0px #38bdf8 !important;
+  background-color: #1f2937 !important;
+  color: #f3f4f6 !important;
 }
 
 /* Custom scrollbar */
@@ -63,6 +67,10 @@ body {
 ::-webkit-scrollbar-track {
   background: #FDFBF7;
   border-left: 2px solid #263D5B;
+}
+.dark ::-webkit-scrollbar-track, body.dark-mode ::-webkit-scrollbar-track {
+  background: #0b0f19;
+  border-left: 2px solid #38bdf8;
 }
 ::-webkit-scrollbar-thumb {
   background: #49B6E5;

@@ -20,15 +20,15 @@ export default function InstitutionCard({ institution, onSelect }: InstitutionCa
       whileHover={{ y: -4, rotate: 0.5 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
       onClick={() => onSelect(institution)}
-      className="bg-white hand-card p-5 cursor-pointer flex flex-col justify-between relative group"
+      className="bg-white dark:bg-slate-900 hand-card p-5 cursor-pointer flex flex-col justify-between relative group text-[#111827] dark:text-gray-100"
     >
       <div>
         {/* Top Badges */}
         <div className="flex items-center justify-between gap-2 mb-3">
-          <span className="text-xs bg-[#49B6E5]/30 text-[#263D5B] font-mono px-2.5 py-1 rounded-full border border-[#263D5B] font-bold">
+          <span className="text-xs bg-[#49B6E5]/30 text-[#263D5B] dark:text-[#38bdf8] font-mono px-2.5 py-1 rounded-full border border-[#263D5B] dark:border-[#38bdf8] font-bold">
             {institution.category}
           </span>
-          <span className="text-xs font-arabic font-bold text-[#263D5B]/70 bg-[#263D5B]/5 px-2.5 py-1 rounded-full">
+          <span className="text-xs font-arabic font-bold text-[#263D5B]/70 dark:text-gray-400 bg-[#263D5B]/5 dark:bg-slate-800 px-2.5 py-1 rounded-full">
             {institution.categoryAr}
           </span>
         </div>
@@ -39,22 +39,22 @@ export default function InstitutionCard({ institution, onSelect }: InstitutionCa
             {institution.acronym}
           </div>
           <div>
-            <h3 className="text-xl font-black font-comic text-[#263D5B] group-hover:text-[#49B6E5] transition-colors leading-snug">
+            <h3 className="text-xl font-black font-comic text-[#263D5B] dark:text-white group-hover:text-[#49B6E5] transition-colors leading-snug">
               {institution.nameFr}
             </h3>
-            <p className="text-sm font-arabic font-bold text-[#263D5B]/80 mt-0.5">
+            <p className="text-sm font-arabic font-bold text-[#263D5B]/80 dark:text-gray-300 mt-0.5">
               {institution.nameAr}
             </p>
           </div>
         </div>
 
         {/* Description snippet */}
-        <p className="text-xs text-gray-600 line-clamp-2 mb-4 font-medium">
+        <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-2 mb-4 font-medium">
           {institution.descriptionFr}
         </p>
 
         {/* Specs: Duration & Access */}
-        <div className="space-y-1.5 text-xs font-medium text-[#263D5B] border-t border-dashed border-[#263D5B]/20 pt-3 mb-4">
+        <div className="space-y-1.5 text-xs font-medium text-[#263D5B] dark:text-gray-300 border-t border-dashed border-[#263D5B]/20 dark:border-slate-700 pt-3 mb-4">
           <div className="flex items-center gap-2">
             <Clock size={14} className="text-[#49B6E5]" />
             <span>{institution.duration}</span>
@@ -68,17 +68,17 @@ export default function InstitutionCard({ institution, onSelect }: InstitutionCa
         {/* Eligible Branches Tags */}
         <div className="flex flex-wrap gap-1 mb-4">
           {institution.eligibleBranches.map((b, idx) => (
-            <span key={idx} className="text-[10px] font-mono font-bold bg-[#263D5B] text-white px-2 py-0.5 rounded">
-              {b}
+            <span key={idx} className="text-[10px] font-mono font-bold bg-[#263D5B] dark:bg-slate-800 text-white px-2 py-0.5 rounded">
+              {b.toUpperCase()}
             </span>
           ))}
         </div>
       </div>
 
       {/* Card Footer Action */}
-      <div className="pt-2 border-t border-[#263D5B]/20 flex items-center justify-between text-xs font-bold text-[#263D5B]">
+      <div className="pt-2 border-t border-[#263D5B]/20 dark:border-slate-700 flex items-center justify-between text-xs font-bold text-[#263D5B] dark:text-gray-200">
         <span className="group-hover:underline text-[#49B6E5]">Voir les détails / التفاصيل</span>
-        <div className="w-8 h-8 rounded-full bg-[#49B6E5]/20 border border-[#263D5B] flex items-center justify-center group-hover:bg-[#49B6E5] transition-colors">
+        <div className="w-8 h-8 rounded-full bg-[#49B6E5]/20 border border-[#263D5B] dark:border-[#38bdf8] flex items-center justify-center group-hover:bg-[#49B6E5] transition-colors">
           <ArrowRight size={14} />
         </div>
       </div>

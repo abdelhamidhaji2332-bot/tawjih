@@ -12,18 +12,18 @@ interface BranchFilterProps {
 export default function BranchFilter({ activeBranch, setActiveBranch }: BranchFilterProps) {
   return (
     <div className="max-w-7xl mx-auto px-4 mb-8">
-      <div className="bg-white hand-card p-4 sm:p-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 border-b-2 border-dashed border-[#263D5B]/30 pb-3">
+      <div className="bg-white dark:bg-slate-900 hand-card p-4 sm:p-6 text-[#111827] dark:text-white">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 border-b-2 border-dashed border-[#263D5B]/30 dark:border-slate-700 pb-3">
           <div>
-            <h2 className="text-xl font-black font-comic text-[#263D5B] flex items-center gap-2">
+            <h2 className="text-xl font-black font-comic text-[#263D5B] dark:text-white flex items-center gap-2">
               <span>🎯 Filtrer par Branche de Baccalauréat</span>
             </h2>
-            <p className="text-xs font-arabic text-[#263D5B]/70 font-bold">
+            <p className="text-xs font-arabic text-[#263D5B]/70 dark:text-gray-400 font-bold">
               اختر مسلك البكالوريا الخاص بك لعرض المؤسسات المقبولة حصرياً
             </p>
           </div>
-          <span className="text-xs bg-[#49B6E5]/30 text-[#263D5B] font-mono px-3 py-1 rounded-full border border-[#263D5B]">
-            Branche active: <strong className="text-[#263D5B]">{activeBranch}</strong>
+          <span className="text-xs bg-[#49B6E5]/30 text-[#263D5B] dark:text-[#38bdf8] font-mono px-3 py-1 rounded-full border border-[#263D5B] dark:border-[#38bdf8]">
+            Branche active: <strong className="text-[#263D5B] dark:text-white">{activeBranch}</strong>
           </span>
         </div>
 
@@ -38,14 +38,14 @@ export default function BranchFilter({ activeBranch, setActiveBranch }: BranchFi
                 whileTap={{ scale: 0.95 }}
                 className={`relative px-4 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 hand-btn ${
                   isActive 
-                    ? 'bg-[#263D5B] text-white shadow-sketch' 
-                    : 'bg-white text-[#263D5B] hover:bg-[#49B6E5]/20'
+                    ? 'bg-[#263D5B] dark:bg-slate-800 text-white shadow-sketch' 
+                    : 'bg-white dark:bg-slate-900 text-[#263D5B] dark:text-gray-200 hover:bg-[#49B6E5]/20'
                 }`}
               >
                 <span className="text-lg">{branch.icon}</span>
                 <div className="text-left">
                   <div className="leading-tight">{branch.labelFr}</div>
-                  <div className={`text-xs font-arabic ${isActive ? 'text-[#49B6E5]' : 'text-[#263D5B]/70'}`}>
+                  <div className={`text-xs font-arabic ${isActive ? 'text-[#49B6E5]' : 'text-[#263D5B]/70 dark:text-gray-400'}`}>
                     {branch.labelAr}
                   </div>
                 </div>
